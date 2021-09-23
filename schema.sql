@@ -15,7 +15,9 @@ create table Product (
     product_name string NOT NULL,
     price decimal(10, 2) NOT NULL,
     stock integer NOT NULL DEFAULT '10',
-    category_id integer references (Category_id)
+    category_id integer references (Category_id),
+    SELECT ISNUMERIC('price');
+    SELECT ISNUMERIC('stock');
     );
     
  create table Tag (
