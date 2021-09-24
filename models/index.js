@@ -4,6 +4,8 @@ const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
 
+//References: https://launchschool.com/books/sql/read/table_relationships
+
 // Products belongsTo Category
 
 Products.belongsTo(Category, {
