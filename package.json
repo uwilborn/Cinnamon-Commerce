@@ -9,12 +9,14 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mysql2": "^2.3.0",
+    "seed": "^0.4.4",
     "sequelize": "^6.6.5"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
