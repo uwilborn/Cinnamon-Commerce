@@ -5,31 +5,40 @@ const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
 
 //References: https://launchschool.com/books/sql/read/table_relationships
+//References: https://sequelize.org/v3/docs/associations/
 
 // Products belongsTo Category
 
-Products.belongsTo(Category, {
+Product.belongsTo(Category, {
   foreignKey: 'category_id',
 });
 
 // Categories have many Products
 
-Category.hasMany(Products, {
+Category.hasMany(Product, {
   foreignKey: 'category_id',
   //onDelete: 'CASCADE',
 });
 
 // Products belongToMany Tags (through ProductTag)
 
-Products.hasMany(Tags, {
-  foreignKey: 'ProductTag_id',
-  onDelete: 'CASCADE',
+Product.belongsToMany(Tag, {
+  through: {
+    model: ProductTag,
+    unique: false
+  },
+  // Define an alias for when data is retrieved
+  as: 'products_manytags'
 });
 
 // Tags belongToMany Products (through ProductTag)
-Tags.hasMany(Products, {
-  foreignKey: 'ProductTag_id',
-  onDelete: 'CASCADE',
+Tag.belongsToMany(Product, {
+  through: {
+    model: ProductTag,
+    unique: false
+  },
+  // Define an alias for when data is retrieved
+  as: 'tags_manyproducts'
 });
 
 

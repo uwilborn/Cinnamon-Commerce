@@ -10,7 +10,7 @@ CREATE TABLE Category (
     category_name string NOT NULL
     );
 
-create table Product (
+create TABLE Product (
     id integer NOT NULL Primary key Auto_increment, 
     product_name string NOT NULL,
     price decimal(10, 2) NOT NULL,
