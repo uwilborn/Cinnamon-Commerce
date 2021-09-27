@@ -9,7 +9,8 @@ const { Category, Product, ProductTag } = require('../../models');
 
   router.get('/', async (req, res) => {
      const categoryData = await Category.findAll(
-       {include: [{ model: Product, through: ProductTag, as: 'products_manytags' }]});
+       {include: [{ model: Product, through: ProductTag}]}
+       );
      return res.json(categoryData);
   });
 
@@ -21,7 +22,7 @@ const { Category, Product, ProductTag } = require('../../models');
     try {
       const categoryData = await Category.findByPk(req.params.id, {
         // JOIN with products, using the Product through table
-        include: [{ model: Product, through: ProductTag, as: 'products_manytags' }]
+        include: [{ model: Product, through: ProductTag }]
       });
   
       if (!categoryData) {
