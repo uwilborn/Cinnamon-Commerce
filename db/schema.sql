@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS ecommerce_db;
+DROP DATABASE IF EXISTS ccommerce_db;
 
-CREATE DATABASE ecommerce_db;
+CREATE DATABASE ccommerce_db;
 
-USE ecommerce_db;
+USE ccommerce_db;
 
 
 CREATE TABLE Category (
@@ -12,10 +12,11 @@ CREATE TABLE Category (
 
 create TABLE Product (
     id integer NOT NULL Primary key Auto_increment, 
-    product_name varchar(30) NOT NULL,
+    product_name varchar(80) NOT NULL,
     price decimal(10, 2) NOT NULL,
     stock integer NOT NULL DEFAULT '10',
-    category_id integer references Category_id
+    category_id integer,
+    foreign key (category_id) references Category(id)
     );
     
  create table Tag (
@@ -27,6 +28,8 @@ create TABLE Product (
  create table ProductTag (
     id integer NOT NULL Primary key Auto_increment, 
     product_id integer references Product_id,
-    tag_id integer references Tag_id
+    foreign key (product_id) references Product(id),
+    tag_id integer,
+    foreign key (tag_id) references Tag(id)
     
     );
